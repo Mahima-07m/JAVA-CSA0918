@@ -24,11 +24,10 @@ public class LibrarySearchScreen extends JFrame {
         top.add(searchRow,BorderLayout.SOUTH);
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton prev = new JButton("Prev"), next = new JButton("Next"), reserve = new JButton("Reserve");
-        bottom.add(prev); bottom.add(next); bottom.add(reserve);
+        bottom.add(prev); bottom.add(next); bottom.add(reserve); bottom.add(status);
         add(top,BorderLayout.NORTH);
         add(new JScrollPane(results),BorderLayout.CENTER);
         add(bottom,BorderLayout.SOUTH);
-        add(status,BorderLayout.PAGE_END);
         find.addActionListener(e -> performSearch());
         search.addActionListener(e -> performSearch());
         prev.addActionListener(e -> status.setText("Previous page"));
