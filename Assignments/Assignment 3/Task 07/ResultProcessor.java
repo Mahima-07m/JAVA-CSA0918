@@ -23,7 +23,7 @@ public class ResultProcessor {
             int score = Integer.parseInt(value);
             if (score < 0 || score > 100) throw new IllegalArgumentException("Score outside 0-100");
             return new Result(file.getFileName().toString(), true, score, "OK");
-        } catch (IOException | NumberFormatException | IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException e) {
             return new Result(file.getFileName().toString(), false, 0, e.getMessage());
         }
     }
