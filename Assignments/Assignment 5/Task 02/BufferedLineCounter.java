@@ -1,5 +1,0 @@
-import java.io.*;import java.nio.file.*;
-public class BufferedLineCounter{
- public static long count(Path p,boolean buffered)throws IOException{long n=0;boolean any=false;try(InputStream raw=Files.newInputStream(p);InputStream in=buffered?new BufferedInputStream(raw):raw){int b;while((b=in.read())!=-1){any=true;if(b=='\n')n++;}}if(any&&Files.size(p)>0){try(RandomAccessFile r=new RandomAccessFile(p.toFile(),"r")){r.seek(r.length()-1);if(r.read()!='\n')n++;}}return n;}
- public static void main(String[] a)throws Exception{Path p=Path.of(a.length==0?"attendance.log":a[0]);if(!Files.exists(p))Files.writeString(p,"One\nTwo\nThree\n");for(boolean b:new boolean[]{false,true}){long t=System.nanoTime();long n=count(p,b);System.out.println((b?"Buffered":"Unbuffered")+" lines: "+n+" time(ns): "+(System.nanoTime()-t));}}
-}
